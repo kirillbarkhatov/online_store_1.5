@@ -26,14 +26,14 @@ class MyServer(BaseHTTPRequestHandler):
 
         else:
             # Wild-card/default
-
-            path = "../html/contacts.html"
+            path = self.path.replace("/", "")
+            path = f"../html/{path}.html"
             type_header = "text/html"
 
         self.send_response(200) # Отправка кода ответа
         self.send_header("Content-type", type_header) # Отправка типа данных, который будет передаваться
         self.end_headers() # Завершение формирования заголовков ответа
-        with open(path) as file:
+        with open(path,encoding="utf-8") as file:
             content = file.read()
             self.wfile.write(bytes(content, "utf-8")) # Тело ответа
 

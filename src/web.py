@@ -27,7 +27,7 @@ class MyServer(BaseHTTPRequestHandler):
         else:
             # Wild-card/default
             path = self.path.replace("/", "")
-            path = f"../html/{path}.html"
+            path = f"../html/contacts.html"
             type_header = "text/html"
 
         self.send_response(200) # Отправка кода ответа
